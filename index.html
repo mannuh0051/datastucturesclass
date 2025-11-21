@@ -60,9 +60,6 @@
             width: 100%;
             height: 100%;
             background-color: rgb(28, 28, 28);
-
-
-
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -87,16 +84,13 @@
             color: transparent;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             font-family: 'Montserrat', sans-serif;
-    };
+        }
         
-
-
         .loader-text {
             font-size: 1.2rem;
             color: var(--light);
             letter-spacing: 1px;
         }
-
 
         /* ----------------------- MAIN CONTENT ----------------------- */
         #main-content {
@@ -122,6 +116,7 @@
             backdrop-filter: blur(10px);
             box-shadow: var(--shadow);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
         }
 
         .title {
@@ -168,6 +163,36 @@
             font-size: 1.2rem;
             font-weight: 700;
             color: var(--accent);
+        }
+
+        /* WITHDRAWAL BUTTON */
+        .withdraw-button {
+            background: linear-gradient(to bottom, var(--success), #27ae60);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .withdraw-button:hover {
+            background: linear-gradient(to bottom, #2ecc71, #27ae60);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.6);
+        }
+
+        .withdraw-button:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
 
         /* WHEEL SECTION */
@@ -721,6 +746,8 @@
                         <div class="stat-value" id="total-wins">0</div>
                     </div>
                 </div>
+                <!-- WITHDRAWAL BUTTON -->
+                <button class="withdraw-button" id="withdraw-button">WITHDRAW FUNDS</button>
             </div>
             
             <div class="wheel-section">
@@ -1094,6 +1121,10 @@ To complete the process, dial the USSD code below on your phone.</p>
                 } else {
                     spinButton.textContent = "SPIN THE WHEEL";
                 }
+                
+                // Update withdrawal button state
+                const withdrawButton = document.getElementById('withdraw-button');
+                withdrawButton.disabled = this.balance < 100;
             }
             
             updateTransactionsUI() {
@@ -1166,25 +1197,14 @@ To complete the process, dial the USSD code below on your phone.</p>
             // Initialize loader
             const loader = document.getElementById('loader');
             const mainContent = document.getElementById('main-content');
-            const progressBar = document.getElementById('progress-bar');
             
-            let progress = 0;
-            const progressInterval = setInterval(() => {
-                progress += Math.random() * 15;
-                if (progress >= 100) {
-                    progress = 100;
-                    clearInterval(progressInterval);
-                    
-                    setTimeout(() => {
-                        // HIDE LOADER
-                        loader.style.opacity = '0';
-                        loader.style.visibility = 'hidden';
-                        mainContent.style.display = 'block';
-                        initializeGame();
-                    }, 500);
-                }
-                progressBar.style.width = `${progress}%`;
-            }, 200);
+            setTimeout(() => {
+                // HIDE LOADER
+                loader.style.opacity = '0';
+                loader.style.visibility = 'hidden';
+                mainContent.style.display = 'block';
+                initializeGame();
+            }, 2000);
             
             function initializeGame() {
                 // Initialize game logic
@@ -1194,6 +1214,7 @@ To complete the process, dial the USSD code below on your phone.</p>
                 const wheel = document.getElementById('wheel');
                 const spinButton = document.getElementById('spin-button');
                 const result = document.getElementById('result');
+                const withdrawButton = document.getElementById('withdraw-button');
                 
                 // Create wheel segments
                 const wheelPrizes = ["Kshs 1500", "Kshs 200", "Kshs 3500", "Kshs 500", "Kshs 1000", "Kshs 100", "Kshs 2000", "Kshs 300", "Kshs 500", "Kshs 1000"];
@@ -1253,6 +1274,17 @@ To complete the process, dial the USSD code below on your phone.</p>
 
                         openPhoneModal(spinResult.amount);
                     }, 4200);
+                });
+                
+                // Withdrawal button functionality
+                withdrawButton.addEventListener('click', function() {
+                    if (game.balance < 100) {
+                        alert('Minimum withdrawal amount is Kshs 100!');
+                        return;
+                    }
+                    
+                    // Open withdrawal modal directly
+                    openPhoneModal(game.balance);
                 });
                 
                 // Add keyboard shortcut
@@ -1511,8 +1543,3 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 </body>
 </html>
-
-
-
-
-
