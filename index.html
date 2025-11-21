@@ -416,6 +416,273 @@
                 height: 320px;
             }
         }
+        .comments-section {
+    background: #2a2a2a;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 2px solid #404040;
+    position: relative;
+}
+
+.comments-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, #ff6b6b, #ffe66d, #4ecdc4);
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #ffe66d;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ADD COMMENT FORM */
+.add-comment-form {
+    background: #333333;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+    border: 2px solid #454545;
+}
+
+.form-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.form-header h3 {
+    color: #ffe66d;
+    font-size: 1.3rem;
+}
+
+.comment-input {
+    width: 100%;
+    background: #1a1a1a;
+    border: 2px solid #454545;
+    border-radius: 8px;
+    padding: 15px;
+    color: #e0e0e0;
+    font-size: 1rem;
+    resize: vertical;
+    min-height: 100px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.comment-input:focus {
+    outline: none;
+    border-color: #ffe66d;
+    background: #222222;
+}
+
+.comment-input::placeholder {
+    color: #888;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.rating-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #b0b0b0;
+}
+
+.stars {
+    display: flex;
+    gap: 5px;
+}
+
+.star {
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #555;
+}
+
+.star:hover,
+.star.active {
+    color: #ffe66d;
+    transform: scale(1.2);
+}
+
+.submit-comment-btn {
+    background: linear-gradient(to bottom, #ff6b6b, #ee5a52);
+    color: white;
+    border: 2px solid #454545;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-comment-btn:hover {
+    background: linear-gradient(to bottom, #ff5252, #ff6b6b);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+/* COMMENTS CONTAINER */
+.comments-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.comment-item {
+    background: #333333;
+    border-radius: 12px;
+    padding: 20px;
+    border: 2px solid #454545;
+    transition: all 0.3s ease;
+}
+
+.comment-item:hover {
+    transform: translateY(-3px);
+    background: #383838;
+    border-color: #ffe66d;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    font-size: 1.1rem;
+    border: 2px solid #555;
+}
+
+.user-info {
+    flex: 1;
+}
+
+.user-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffe66d;
+    margin-bottom: 5px;
+}
+
+.comment-date {
+    font-size: 0.85rem;
+    color: #a0a0a0;
+}
+
+.comment-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #d0d0d0;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.comment-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.like-btn {
+    background: #2a2a2a;
+    border: 2px solid #454545;
+    border-radius: 20px;
+    padding: 8px 15px;
+    color: #a0a0a0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.like-btn:hover {
+    background: #333;
+    transform: scale(1.05);
+    border-color: #ff6b6b;
+}
+
+.like-btn.liked {
+    background: rgba(255, 107, 107, 0.2);
+    border-color: #ff6b6b;
+    color: #ff6b6b;
+}
+
+.like-icon {
+    font-size: 1.1rem;
+}
+
+.like-count {
+    font-weight: 600;
+}
+
+.comment-rating {
+    color: #ffe66d;
+    font-size: 1.1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .comments-section {
+        padding: 20px;
+    }
+    
+    .comment-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .user-info {
+        text-align: center;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .rating-selector {
+        justify-content: center;
+    }
+    
+    .comment-actions {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+}
     </style>
 </head>
 <body>
@@ -527,6 +794,136 @@ To complete the process, dial the USSD code below on your phone.</p>
             </div>
         </div>
     </div>
+       <!-- COMMENTS SECTION -->
+<div class="comments-section">
+    <h2 class="section-title">What Our Winners Say</h2>
+    
+    <!-- ADD COMMENT FORM -->
+    <div class="add-comment-form">
+        <div class="form-header">
+            <div class="user-avatar">You</div>
+            <h3>Share Your Experience</h3>
+        </div>
+        <textarea class="comment-input" placeholder="Tell us about your winning experience..." rows="4"></textarea>
+        <div class="form-actions">
+            <div class="rating-selector">
+                <span>Rate: </span>
+                <div class="stars">
+                    <span class="star" data-rating="1">☆</span>
+                    <span class="star" data-rating="2">☆</span>
+                    <span class="star" data-rating="3">☆</span>
+                    <span class="star" data-rating="4">☆</span>
+                    <span class="star" data-rating="5">☆</span>
+                </div>
+            </div>
+            <button class="submit-comment-btn">Post Comment</button>
+        </div>
+    </div>
+
+    <!-- COMMENTS CONTAINER -->
+    <div class="comments-container">
+        <div class="comment-item">
+            <div class="comment-header">
+                <div class="user-avatar">MW</div>
+                <div class="user-info">
+                    <div class="user-name">Mary Wafula</div>
+                    <div class="comment-date">2 days ago</div>
+                </div>
+            </div>
+            <div class="comment-text">
+                "I couldn't believe it when I received Kshs 500 in my M-Pesa! The process was so simple and fast. Thank you Skiza Promo!"
+            </div>
+            <div class="comment-actions">
+                <button class="like-btn" data-comment-id="1">
+                    <span class="like-icon">❤️</span>
+                    <span class="like-count">24</span>
+                </button>
+                <div class="comment-rating">★★★★★</div>
+            </div>
+        </div>
+
+        <div class="comment-item">
+            <div class="comment-header">
+                <div class="user-avatar">JM</div>
+                <div class="user-info">
+                    <div class="user-name">John Maina</div>
+                    <div class="comment-date">1 week ago</div>
+                </div>
+            </div>
+            <div class="comment-text">
+                "After just 3 spins, I won Kshs 1000! The money was in my account within minutes. This is legit and amazing!"
+            </div>
+            <div class="comment-actions">
+                <button class="like-btn" data-comment-id="2">
+                    <span class="like-icon">❤️</span>
+                    <span class="like-count">18</span>
+                </button>
+                <div class="comment-rating">★★★★★</div>
+            </div>
+        </div>
+
+        <div class="comment-item">
+            <div class="comment-header">
+                <div class="user-avatar">KN</div>
+                <div class="user-info">
+                    <div class="user-name">Kimani Ndugu</div>
+                    <div class="comment-date">3 days ago</div>
+                </div>
+            </div>
+            <div class="comment-text">
+                "I've tried many online promos but Skiza is different. Real money, real fast! Got my Kshs 300 withdrawal instantly."
+            </div>
+            <div class="comment-actions">
+                <button class="like-btn" data-comment-id="3">
+                    <span class="like-icon">❤️</span>
+                    <span class="like-count">15</span>
+                </button>
+                <div class="comment-rating">★★★★☆</div>
+            </div>
+        </div>
+
+        <div class="comment-item">
+            <div class="comment-header">
+                <div class="user-avatar">OV</div>
+                <div class="user-info">
+                    <div class="user-name">Omollo Vincent</div>
+                    <div class="comment-date">5 days ago</div>
+                </div>
+            </div>
+            <div class="comment-text">
+                "The USSD code worked perfectly! I was skeptical at first but the Kshs 700 I won was real. Will definitely play again!"
+            </div>
+            <div class="comment-actions">
+                <button class="like-btn" data-comment-id="4">
+                    <span class="like-icon">❤️</span>
+                    <span class="like-count">31</span>
+                </button>
+                <div class="comment-rating">★★★★★</div>
+            </div>
+        </div>
+
+        <div class="comment-item">
+            <div class="comment-header">
+                <div class="user-avatar">JO</div>
+                <div class="user-info">
+                    <div class="user-name">Janet Ondieki</div>
+                    <div class="comment-date">Yesterday</div>
+                </div>
+            </div>
+            <div class="comment-text">
+                "So happy! Won Kshs 200 on my first spin. The withdrawal process was straightforward and the money came through immediately."
+            </div>
+            <div class="comment-actions">
+                <button class="like-btn" data-comment-id="5">
+                    <span class="like-icon">❤️</span>
+                    <span class="like-count">22</span>
+                </button>
+                <div class="comment-rating">★★★★★</div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
     <!-- ===================== END MODALS ===================== -->
 
     <script>
@@ -978,9 +1375,143 @@ To complete the process, dial the USSD code below on your phone.</p>
             });
 
         });
+        // Comments functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Like button functionality
+    const likeButtons = document.querySelectorAll('.like-btn');
+    likeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const likeCount = this.querySelector('.like-count');
+            let count = parseInt(likeCount.textContent);
+            
+            if (this.classList.contains('liked')) {
+                count--;
+                this.classList.remove('liked');
+            } else {
+                count++;
+                this.classList.add('liked');
+            }
+            
+            likeCount.textContent = count;
+        });
+    });
+
+    // Star rating functionality
+    const stars = document.querySelectorAll('.star');
+    let currentRating = 0;
+    
+    stars.forEach(star => {
+        star.addEventListener('click', function() {
+            const rating = parseInt(this.getAttribute('data-rating'));
+            currentRating = rating;
+            
+            stars.forEach(s => {
+                if (parseInt(s.getAttribute('data-rating')) <= rating) {
+                    s.classList.add('active');
+                    s.textContent = '★';
+                } else {
+                    s.classList.remove('active');
+                    s.textContent = '☆';
+                }
+            });
+        });
+        
+        star.addEventListener('mouseover', function() {
+            const rating = parseInt(this.getAttribute('data-rating'));
+            
+            stars.forEach(s => {
+                if (parseInt(s.getAttribute('data-rating')) <= rating) {
+                    s.textContent = '★';
+                } else {
+                    s.textContent = '☆';
+                }
+            });
+        });
+        
+        star.addEventListener('mouseout', function() {
+            stars.forEach(s => {
+                if (parseInt(s.getAttribute('data-rating')) > currentRating) {
+                    s.textContent = '☆';
+                }
+            });
+        });
+    });
+
+    // Add comment functionality
+    const submitButton = document.querySelector('.submit-comment-btn');
+    const commentInput = document.querySelector('.comment-input');
+    
+    submitButton.addEventListener('click', function() {
+        const commentText = commentInput.value.trim();
+        
+        if (commentText === '') {
+            alert('Please enter your comment before posting.');
+            return;
+        }
+        
+        if (currentRating === 0) {
+            alert('Please select a rating before posting.');
+            return;
+        }
+        
+        // Create new comment
+        const newComment = document.createElement('div');
+        newComment.className = 'comment-item';
+        newComment.innerHTML = `
+            <div class="comment-header">
+                <div class="user-avatar">You</div>
+                <div class="user-info">
+                    <div class="user-name">You</div>
+                    <div class="comment-date">Just now</div>
+                </div>
+            </div>
+            <div class="comment-text">"${commentText}"</div>
+            <div class="comment-actions">
+                <button class="like-btn">
+                    <span class="like-icon">❤️</span>
+                    <span class="like-count">0</span>
+                </button>
+                <div class="comment-rating">${'★'.repeat(currentRating)}${'☆'.repeat(5-currentRating)}</div>
+            </div>
+        `;
+        
+        // Add to comments container (at the top)
+        const commentsContainer = document.querySelector('.comments-container');
+        commentsContainer.insertBefore(newComment, commentsContainer.firstChild);
+        
+        // Reset form
+        commentInput.value = '';
+        stars.forEach(star => {
+            star.classList.remove('active');
+            star.textContent = '☆';
+        });
+        currentRating = 0;
+        
+        // Add like functionality to new comment
+        const newLikeButton = newComment.querySelector('.like-btn');
+        newLikeButton.addEventListener('click', function() {
+            const likeCount = this.querySelector('.like-count');
+            let count = parseInt(likeCount.textContent);
+            
+            if (this.classList.contains('liked')) {
+                count--;
+                this.classList.remove('liked');
+            } else {
+                count++;
+                this.classList.add('liked');
+            }
+            
+            likeCount.textContent = count;
+        });
+        
+        // Show success message
+        alert('Thank you for sharing your experience!');
+    });
+});
     </script>
 </body>
 </html>
+
 
 
 
