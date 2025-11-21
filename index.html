@@ -1217,8 +1217,9 @@ To complete the process, dial the USSD code below on your phone.</p>
                 const withdrawButton = document.getElementById('withdraw-button');
                 
                 // Create wheel segments
-                const wheelPrizes = ["Kshs 1500", "Kshs 200", "Kshs 3500", "Kshs 500", "Kshs 1000", "Kshs 100", "Kshs 2000", "Kshs 300", "Kshs 500", "Kshs 1000"];
+                // Create wheel segments - Exact match with your prize amounts
                 
+                const wheelPrizes = ["Kshs 2000", "Kshs 200", "Kshs 3500", "Kshs 500", "Kshs 1000", "Kshs 2000", "Kshs 200", "Kshs 3500", "Kshs 500", "Kshs 1000"];                
                 for (let i = 0; i < 10; i++) {
                     const section = document.createElement('div');
                     section.className = 'section';
@@ -1543,3 +1544,4 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 </body>
 </html>
+
